@@ -25,19 +25,22 @@ sudo tee /opt/cribl/local/_system/instance.yml > /dev/null <<EOF
 ############################################################
 
 distributed:
-  mode: master
+  mode: worker
+  envRegex: /^CRIBL_/
   master:
-    host: 0.0.0.0
+    host: ip-172-31-7-111.ec2.internal
     port: 4200
-    forwardToLeaderApi: true
+    authToken: ${CRIBL_AUTH_TOKEN}
+    compression: none
     tls:
       disabled: true
-    ipWhitelistRegex: /.&ast;/
-    authToken: ${CRIBL_AUTH_TOKEN}
-    enabledWorkerRemoteAccess: false
-    compression: none
     connectionTimeout: 5000
     writeTimeout: 10000
+  tags:
+       - tag1
+       - tag2
+       - tag42
+  group: default
 EOF
 
 # Ensure the cribl user owns the installation directory
@@ -47,7 +50,7 @@ sudo chown -R cribl:cribl /opt/cribl
 sudo /opt/cribl/bin/cribl boot-start enable -m systemd -u cribl
 
 # start and enable the service
-sudo systemctl start cribl
+#sudo systemctl start cribl
 sudo systemctl enable cribl
 
 # Check the status of the service

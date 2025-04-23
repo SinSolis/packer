@@ -47,7 +47,7 @@ sudo chown -R cribl:cribl /opt/cribl
 sudo /opt/cribl/bin/cribl boot-start enable -m systemd -u cribl
 
 # start and enable the service
-sudo systemctl start cribl
+#sudo systemctl start cribl
 sudo systemctl enable cribl
 
 # Check the status of the service
