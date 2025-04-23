@@ -43,8 +43,8 @@ EOF
 sudo chown -R cribl:cribl /opt/cribl
 
 # set the right auth token
-
 sudo -u cribl /opt/cribl/bin/cribl mode-master -u ${CRIBL_AUTH_TOKEN}
+
 # Configure cribl to run with systemd
 sudo /opt/cribl/bin/cribl boot-start enable -m systemd -u cribl
 
