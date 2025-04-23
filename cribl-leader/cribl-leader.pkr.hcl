@@ -51,6 +51,6 @@ build {
 
 provisioner "shell" {
   environment_vars = ["CRIBL_AUTH_TOKEN=${var.cribl_auth_token}"]
-  script = "install-cribl.sh"
+  script = "install-cribl-leader.sh"
 }
 }
