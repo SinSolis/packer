@@ -8,7 +8,7 @@ set -e
 curl -fL -o /tmp/cribl.tar.gz https://cdn.cribl.io/dl/4.10.1/cribl-4.10.1-45136dbb-linux-x64.tgz
 sudo mkdir -p /opt/cribl
 sudo mkdir -p /opt/cribl/local/_system
-sudo touch /opt/cribl/local/_system/instance
+sudo touch /opt/cribl/local/_system/instance.yml
 sudo tar -xzf /tmp/cribl.tar.gz -C /opt/cribl --strip-components=1
 sudo rm /tmp/cribl.tar.gz
 
@@ -54,4 +54,4 @@ sudo /opt/cribl/bin/cribl boot-start enable -m systemd -u cribl
 sudo systemctl enable cribl
 
 # Check the status of the service
-sudo systemctl status cribl
+#sudo systemctl status cribl
