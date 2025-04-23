@@ -28,8 +28,6 @@ distributed:
   mode: worker
   envRegex: /^CRIBL_/
   master:
-    host: ip-172-31-7-111.ec2.internal
-    port: 4200
     compression: none
     tls:
       disabled: true
@@ -46,7 +44,7 @@ EOF
 sudo chown -R cribl:cribl /opt/cribl
 
 # set the right auth token
-sudo -u cribl /opt/cribl/bin/cribl mode-worker -H 52.91.119.159 -p 4200 -u ${CRIBL_AUTH_TOKEN}
+sudo -u cribl /opt/cribl/bin/cribl mode-worker -H 100.25.4.240 -p 4200 -u ${CRIBL_AUTH_TOKEN}
 
 # Configure cribl to run with systemd
 sudo /opt/cribl/bin/cribl boot-start enable -m systemd -u cribl
