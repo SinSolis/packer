@@ -25,3 +25,13 @@ sudo /opt/cribl/bin/cribl boot-start enable -m systemd -u cribl
 
 # packer build command
 packer build -var "cribl_auth_token=$CRIBL_AUTH_TOKEN" cribl-worker.pkr.hcl
+
+
+# install steps for efs
+Clone the stuff into /tmp/ path to prevent errors 
+sudo apt-get update
+sudo apt-get -y install git binutils rustc cargo pkg-config libssl-dev gettext
+git clone https://github.com/aws/efs-utils
+cd efs-utils
+./build-deb.sh
+sudo apt-get -y install ./build/amazon-efs-utils*deb
